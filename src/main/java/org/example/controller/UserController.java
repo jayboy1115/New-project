@@ -2,6 +2,7 @@ package org.example.controller;
 
 import org.example.dto.CreateUserRequest;
 import org.example.dto.CreateUserResponse;
+import org.example.dto.LoginRequest;
 import org.example.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,6 +27,14 @@ public class UserController {
         try {
             return new ResponseEntity<>(userService.createUser(createUserRequest), HttpStatus.CREATED);
 
+        } catch (Exception e) {
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+        }
+    }
+    @PostMapping("/login")
+    public ResponseEntity <?> login(@RequestBody LoginRequest loginRequest) {
+        try{
+            return new ResponseEntity<>(userService.login(loginRequest), HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
