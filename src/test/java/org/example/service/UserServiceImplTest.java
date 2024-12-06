@@ -16,7 +16,7 @@ public class UserServiceImplTest {
     @Test
     void testThatInvalidEmailFormatIsRejected() {
         CreateUserRequest createUserRequest = new CreateUserRequest();
-        createUserRequest.setEmail("invalid-email");
+        createUserRequest.setEmail("johnson-email");
         createUserRequest.setUserName("invalid-name");
         createUserRequest.setPassword("invalid-password");
         Exception exception = assertThrows(IllegalArgumentException.class, () -> {
@@ -46,7 +46,7 @@ public class UserServiceImplTest {
     void testThatDuplicateEmailIsRejected() {
         CreateUserRequest createUserRequest = new CreateUserRequest();
         createUserRequest.setEmail("john@example.com");
-        createUserRequest.setUserName("badafeez");
+        createUserRequest.setUserName("ibitoye");
         createUserRequest.setPassword("johnson");
         userService.createUser(createUserRequest);
 

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.net.http.HttpResponse;
 
 @RestController
-@RequestMapping("api")
+@RequestMapping("/api")
 public class UserController {
 
     @Autowired
@@ -28,7 +28,7 @@ public class UserController {
             return new ResponseEntity<>(userService.createUser(createUserRequest), HttpStatus.CREATED);
 
         } catch (Exception e) {
-            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
     @PostMapping("/login")
